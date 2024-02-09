@@ -1,0 +1,28 @@
+.logo {
+    top: 32px;
+    left: 246px;
+    width: 127px;
+    height: 52px;
+    /* UI Properties */
+    text-align: left;
+    font: normal normal bold 22px/25px Montserrat;
+    letter-spacing: 0px;
+    text-transform: capitalize;
+    opacity: 1;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+th,
+td {
+    padding-top: 20px;
+    padding-right: 100px;
+}
+
+input {
+    margin-left: 1500px;
+}
+
