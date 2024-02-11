@@ -114,8 +114,59 @@ $(document).on('click', '.delete-btn', function() {
 
 
 
+$(document).on('click', '.edit-btn', function() {
+    var rowId = $(this).closest('tr').attr('id');
+    var id = rowId.split('_')[1]; // Extract the id from the row id
+    editRecord(id);
+});
 
 
+
+function editRecord(id) {
+    // Collect updated data from input fields
+    var updatedName = prompt("Enter the updated name");
+    var updatedImageNumber = prompt("Enter the updated image number:  1,2,3,4");
+    var updatedGender = prompt("Enter the updated gender");
+    var updatedDepartment = prompt("Enter the updated department");
+    var updatedSalary = prompt("Enter the updated salary");
+    var updatedNote = prompt("Enter the updated notes");
+
+    // Construct the updated object
+    var updatedData = {
+        name: updatedName,
+        gender: updatedGender,
+        department: updatedDepartment,
+        salary: updatedSalary,
+        note: updatedNote
+    };
+
+    // Update the image path based on the selected number
+    var updatedImagePath = "../assests/I" + updatedImageNumber + ".jpg";
+    updatedData.imageSrc = updatedImagePath;
+
+    // Send the updated data to the server
+    $.ajax({
+        url: "http://localhost:3000/data/" + id,
+        method: "PUT",
+        data: JSON.stringify(updatedData),
+        contentType: "application/json",
+        success: function (data) {
+            console.log("Success:", data);
+            // Update the row in the table with the new data
+            var row = $('#row_' + id);
+            row.find('td:nth-child(1) img').attr('src', updatedImagePath);
+            row.find('td:nth-child(1)').text(updatedName);
+            row.find('td:nth-child(2)').text(updatedGender);
+            row.find('td:nth-child(3)').text(updatedDepartment);
+            row.find('td:nth-child(4)').text(updatedSalary);
+            row.find('td:nth-child(5)').text(updatedNote);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error updating record:", status, error);
+            console.log("Server response:", xhr.responseText);
+        }
+    });
+}
 
 
 
