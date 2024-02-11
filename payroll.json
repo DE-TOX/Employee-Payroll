@@ -1,50 +1,15 @@
 {
   "data": [
     {
-      "id": "a132",
+      "id": "07d1",
       "name": "Divyansh Joshi",
       "gender": "male",
       "department": [
         "Engineer"
       ],
       "salary": "$15000",
-      "note": "HEY"
-    },
-    {
-      "id": "0c01",
-      "name": "Samriddh",
-      "gender": "male",
-      "department": [
-        "Sales",
-        "Finance"
-      ],
-      "salary": "$1000",
-      "imageSrc": [],
-      "note": "Byee"
-    },
-    {
-      "id": "7fc6",
-      "name": "SAM",
-      "gender": "female",
-      "department": [
-        "Engineer"
-      ],
-      "salary": "$1000",
-      "imageSrc": "../assests/WhatsApp Image 2024-02-09 at 15.48.53_9736ba1b.jpg",
-      "note": "YES"
-    },
-    {
-      "id": "b939",
-      "name": "Shivansh",
-      "gender": "male",
-      "department": [
-        "Engineer"
-      ],
-      "salary": "$15000",
-      "imageSrc": [
-        "../assests/WhatsApp Image 2024-02-09 at 15.48.58_15abe770.jpg"
-      ],
-      "note": "very rich"
+      "imageSrc": "../assests/I2.jpg",
+      "note": "INDIA"
     }
   ]
 }
