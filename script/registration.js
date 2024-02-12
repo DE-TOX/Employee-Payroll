@@ -15,7 +15,7 @@ function subDetails() {
     var note = jQuery('#notes').val();
     const obj = {
         name: name,
-        gender: gender ? "male" : "female",
+        gender: gender ? "Male" : "Female",
         department: [],
         salary: salary,
         imageSrc: "" ,

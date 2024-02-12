@@ -1,9 +1,11 @@
 * {
     margin: 0;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 body {
     background-color: rgba(65, 57, 57, 0.256);
+
 }
 
 .nav {

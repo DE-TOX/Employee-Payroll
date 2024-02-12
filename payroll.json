@@ -1,13 +1,15 @@
 {
   "data": [
     {
-      "name": "DJ",
-      "gender": "Male",
-      "department": "Engineer",
+      "id": "f1e9",
+      "name": "Divyansh Joshi",
+      "gender": "male",
+      "department": [
+        "Engineer"
+      ],
       "salary": "$15000",
-      "note": "India",
-      "imageSrc": "../assests/I3.jpg",
-      "id": "777e"
+      "imageSrc": "../assests/I2.jpg",
+      "note": "HEYLOOO"
     }
   ]
 }
