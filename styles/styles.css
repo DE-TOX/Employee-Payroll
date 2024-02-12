@@ -1,10 +1,19 @@
 * {
     margin: 0;
-
 }
 
 body {
-    background-color: rgb(224, 218, 218);
+    background-color: rgb(169, 169, 169);
+}
+
+.container {
+    margin-right: 500px;
+    margin-left: 500px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
 }
 
 .form {
@@ -35,10 +44,8 @@ body {
 }
 
 .form {
-    background-color: rgb(255, 255, 255);
-    margin-right: 500px;
-    margin-left: 500px;
 
+    background-color: rgb(255, 255, 255);
 }
 
 .name {
@@ -52,8 +59,7 @@ body {
     font-size: 20px;
     gap: 5px;
     padding-left: 50px;
-    padding-top: 30px;
-
+    padding-top: 10px;
     background-color: white;
 }
 
@@ -65,12 +71,14 @@ body {
 
 .button {
     margin-bottom: 20px;
+    /* margin-left: 100px; */
 }
 
 .b1 {
     height: 30px;
     width: 100px;
-    margin-right: 100px;
+    margin-right: 350px;
+    margin-left: 20px;
 }
 
 .b2 {

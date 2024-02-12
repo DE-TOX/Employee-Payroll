@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Payroll Registration</title>
+</head>
+
+<body>
+    <div class="body">
+
+        <div class="nav">
+            <div>
+                <a href="dashboard.html"><img src="../assests/logo.jpg" alt="" class="name"></a>
+            </div>
+            <div>
+                <h3 class="logo-name">
+                    <p style="color:#82A70C;">Employee</p>Payroll
+                </h3>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="form">
+                <div class="label">
+                    <label id="heading">
+                        <h3>
+                            Employee Payroll Form
+                        </h3>
+                    </label>
+                    <label for="name">Name</label>
+                    <label for="profile">Profile Image</label>
+                    <label for="gender">Gender</label>
+                    <label for="dept">Department</label>
+                    <label for="salary">Salary</label>
+                    <label for="notes">Notes</label>
+                </div>
+
+                <div class="input">
+                    <br><br>
+                    <div>
+                        <input type="text" id="name" name="name"><br>
+                    </div>
+                    <div class="profile-radio">
+                        <div>
+                            <input type="radio" id="profile1" name="profile" value="../assests/I1   .jpg">
+                            <img src="../assests/I1.jpg" class="pp">
+                        </div>
+                        <div>
+                            <input type="radio" id="profile2" name="profile" value="../assests/I2.jpg">
+                            <img src="../assests/I2.jpg" class="pp">
+                        </div>
+                        <div>
+                            <input type="radio" id="profile3" name="profile" value="../assests/I3.jpg">
+                            <img src="../assests/I3.jpg" class="pp">
+                        </div>
+                        <div>
+                            <input type="radio" id="profile4" name="profile" value="../assests/I4.jpg">
+                            <img src="../assests/I4.jpg" class="pp">
+                        </div>
+                    </div>
+                    <div class="gender-radio">
+                        <div>
+                            <input type="radio" id="gender" value="Male" name="gender">
+                            Male
+                        </div>
+                        <div>
+                            <input type="radio" id="gender" value="Female" name="gender">
+                            Female
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" id="dept1" name="dept">
+                            HR
+                        </div>
+                        <div>
+                            <input type="checkbox" id="dept2" name="dept">
+                            Sales
+                        </div>
+                        <div>
+                            <input type="checkbox" id="dept3" name="dept">
+                            Finance
+                        </div>
+                        <div>
+                            <input type="checkbox" id="dept4" name="dept">
+                            Engineer
+                        </div>
+                        <div>
+                            <input type="checkbox" id="dept5" name="dept">
+                            Others
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <select name="salary" id="salary">
+                            <option value="0">Select Salary</option>
+                            <option value="$1000">$1000</option>
+                            <option value="$5000">$5000</option>
+                            <option value="$10000">$10000</option>
+                            <option value="$15000">$15000</option>
+                        </select>
+                    </div>
+                    <div class="textarea">
+                        <textarea id="notes" name="notes" rows="4" cols="25"></textarea>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="button">
+                <a href="dashboard.html">
+                    <input type="button" value="Cancel" class="b1">
+                </a>
+                <input type="button" id="Submit" value="Submit" class="b2">
+                <a href="registration.html">
+                    <input type="button" value="Reset" class="b3">
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            // Check if there is an editId query parameter
+            var urlParams = new URLSearchParams(window.location.search);
+            var editId = urlParams.get('editId');
+            console.log(editId);
+            if (editId) {
+                $.ajax({
+                    url: "http://localhost:3000/data/" + editId,
+                    type: 'GET',
+                    success: function (record) {
+                        // Pre-fill the form fields with the retrieved data
+                        $('#name').val(record.name);
+                        $('input[name="gender"][value="' + record.gender + '"]').prop('checked', true);
+                        $('input[name="profile"][value="' + record.imageSrc + '"]').prop('checked', true);
+                        record.department.forEach(function (dept) {
+                            switch (dept) {
+                                case 'HR':
+                                    $('#dept1').prop('checked', true);
+                                    break;
+                                case 'Sales':
+                                    $('#dept2').prop('checked', true);
+                                    break;
+                                case 'Finance':
+                                    $('#dept3').prop('checked', true);
+                                    break;
+                                case 'Engineer':
+                                    $('#dept4').prop('checked', true);
+                                    break;
+                                case 'Others':
+                                    $('#dept5').prop('checked', true);
+                                    break;
+                            }
+                        });
+                        $('#salary').val(record.salary);
+                        $('#notes').val(record.note);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching record:', error);
+                    }
+                });
+            }
+        };
+    </script>
+    <script src="/script/registration.js"></script>
+</body>
+
+</html>
