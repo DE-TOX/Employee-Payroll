@@ -1,15 +1,17 @@
 {
   "data": [
     {
-      "id": "f1e9",
-      "name": "Divyansh Joshi",
-      "gender": "male",
+      "name": "Divyansh",
+      "gender": "Female",
       "department": [
+        "HR",
+        "Finance",
         "Engineer"
       ],
-      "salary": "$15000",
+      "salary": "$1000",
       "imageSrc": "../assests/I2.jpg",
-      "note": "HEYLOOO"
+      "note": "HEyyy",
+      "id": "38ac"
     }
   ]
 }

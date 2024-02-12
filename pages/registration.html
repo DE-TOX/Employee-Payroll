@@ -46,29 +46,29 @@
                     </div>
                     <div class="profile-radio">
                         <div>
-                            <input type="radio" id="profile1" name="profile">
+                            <input type="radio" id="profile1" name="profile" value="../assests/I1   .jpg">
                             <img src="../assests/I1.jpg" class="pp">
                         </div>
                         <div>
-                            <input type="radio" id="profile2" name="profile">
+                            <input type="radio" id="profile2" name="profile" value="../assests/I2.jpg">
                             <img src="../assests/I2.jpg" class="pp">
                         </div>
                         <div>
-                            <input type="radio" id="profile3" name="profile">
+                            <input type="radio" id="profile3" name="profile" value="../assests/I3.jpg">
                             <img src="../assests/I3.jpg" class="pp">
                         </div>
                         <div>
-                            <input type="radio" id="profile4" name="profile">
+                            <input type="radio" id="profile4" name="profile" value="../assests/I4.jpg">
                             <img src="../assests/I4.jpg" class="pp">
                         </div>
                     </div>
                     <div class="gender-radio">
                         <div>
-                            <input type="radio" id="gender" name="gender">
+                            <input type="radio" id="gender" value="Male" name="gender">
                             Male
                         </div>
                         <div>
-                            <input type="radio" id="gender" name="gender">
+                            <input type="radio" id="gender" value="Female" name="gender">
                             Female
                         </div>
                     </div>
@@ -123,6 +123,50 @@
             </div>
         </div>
     </div>
+    <script>
+        window.onload = function () {
+            // Check if there is an editId query parameter
+            var urlParams = new URLSearchParams(window.location.search);
+            var editId = urlParams.get('editId');
+            console.log(editId);
+            if (editId) {
+                $.ajax({
+                    url: "http://localhost:3000/data/" + editId,
+                    type: 'GET',
+                    success: function (record) {
+                        // Pre-fill the form fields with the retrieved data
+                        $('#name').val(record.name);
+                        $('input[name="gender"][value="' + record.gender + '"]').prop('checked', true);
+                        $('input[name="profile"][value="' + record.imageSrc + '"]').prop('checked', true);
+                        record.department.forEach(function (dept) {
+                            switch (dept) {
+                                case 'HR':
+                                    $('#dept1').prop('checked', true);
+                                    break;
+                                case 'Sales':
+                                    $('#dept2').prop('checked', true);
+                                    break;
+                                case 'Finance':
+                                    $('#dept3').prop('checked', true);
+                                    break;
+                                case 'Engineer':
+                                    $('#dept4').prop('checked', true);
+                                    break;
+                                case 'Others':
+                                    $('#dept5').prop('checked', true);
+                                    break;
+                            }
+                        });
+                        $('#salary').val(record.salary);
+                        $('#notes').val(record.note);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching record:', error);
+                    }
+                });
+            }
+        };
+    </script>
     <script src="/script/registration.js"></script>
 </body>
 

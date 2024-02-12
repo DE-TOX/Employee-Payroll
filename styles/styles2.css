@@ -75,3 +75,8 @@ td {
     background-color: #82A70C;
     color: aliceblue;
 }
+
+.tdName {
+    display: flex;
+    padding-left: 10px;
+}
